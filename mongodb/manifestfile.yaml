@@ -28,17 +28,16 @@ spec:
       containers:
       - name: mongodb
         image: ramanadockerhub/mongodb:v1
-        readinessPorbe:
-          tcpSockets:
+        readinessProbe:
+          tcpSocket: #tcpsockt not tcpsockets
             port: 27107
-        intialDelaySeconds: 10
-        periodSeconds: 10  
-        livenessPorbe: #health chcek
-          tcpSockets: 
+            initialDelaySeconds: 10
+            periodSeconds: 10  
+        livenessProbe: #health chcek
+          tcpSocket: 
           port: 27017
-        intialDelaySeconds: 5
-        periodSeconds: 5
-
+          initialDelaySeconds: 5
+          periodSeconds: 5
 
 ---
 apiVersion: v1
