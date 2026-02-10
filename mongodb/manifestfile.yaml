@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: ramanadockerhub/mongodb:v1
+        image: ramanadockerhub/mongodb
 
 # ---
 # apiVersion: v1
