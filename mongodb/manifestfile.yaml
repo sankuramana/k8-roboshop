@@ -36,8 +36,8 @@ spec:
         livenessPorbe: #health chcek
           tcpSockets: 
           port: 27017
-        intialDelaySeconds: 15
-        periodSeconds: 10  
+        intialDelaySeconds: 5
+        periodSeconds: 5
 
 
 # ---
