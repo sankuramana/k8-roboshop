@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: roboshop #namespsceshould be rohoshop else it will be degfault 
+  # these are replica set labels
+  labels:
+    project: roboshop
+    component: mongodb
+    tier: db
+spec:
+  replicas: 1
+  selector:
+    # these labels are used to select pods
+    matchLabels:
+    project: roboshop
+    component: mongodb
+    tier: db
+  # pod definition
+  template:
+    metadata:
+      labels:
+        # purpose: dp-demo
+    project: roboshop
+    component: mongodb
+    tier: db
+    spec:
+      containers:
+      - name: mongodb
+        image: ramanadockerhub/mongodb
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+spec:
+  selector:
+    project: roboshop
+    component: mongodb
+    tier: db
+  ports:
+  - protocol: TCP
+    port: 27017        # Service port
+    targetPort: 27017 # Pod container port
+   
