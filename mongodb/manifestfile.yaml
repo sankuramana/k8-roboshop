@@ -40,7 +40,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongodb
-  namespace: roboshop
+  namespace: roboshop #namespace must be same as deployment
 spec:
   selector:
     project: roboshop
