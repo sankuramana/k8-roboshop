@@ -1,0 +1,13 @@
+apiVersion: v1                  # API version used to create the Pod
+kind: Pod                       # Resource type is Pod
+metadata:
+  name: debug                   # Name of the Pod
+  namespace: roboshop           # Pod will be created inside the 'roboshop' namespace
+  labels:                       # Labels used for identifying and grouping objects
+    name: debug                 # Label: name of the app/pod
+    project: roboshop           # Label: project name (useful for filtering)
+spec:
+  containers:                   # List of containers inside the Pod
+  - name: debug                 # Container name
+    image: sankuramanadockerhub/debug:v1                # Docker image that container uses (from DockerHub)
+    
