@@ -13,17 +13,17 @@ spec:
   selector:
     # these labels are used to select pods
     matchLabels:
-    project: roboshop
-    component: mongodb
-    tier: db
+      project: roboshop #check thhis indentation
+      component: mongodb
+      tier: db
   # pod definition
   template:
     metadata:
       labels:
         # purpose: dp-demo
-    project: roboshop
-    component: mongodb
-    tier: db
+        project: roboshop
+        component: mongodb
+        tier: db
     spec:
       containers:
       - name: mongodb
