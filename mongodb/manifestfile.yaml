@@ -48,6 +48,6 @@ spec:
     tier: db
   ports:
   - protocol: TCP
-    port: 27017
+    port: 2707
     targetPort: 27017
 
