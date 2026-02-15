@@ -9,5 +9,5 @@ metadata:
 spec:
   containers:                   # List of containers inside the Pod
   - name: debug                 # Container name
-    image: sankuramanadockerhub/debug:v1                # Docker image that container uses (from DockerHub)
+    image: ramanadockerhub/debug:v1                # Docker image that container uses (from DockerHub)
     
