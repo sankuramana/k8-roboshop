@@ -32,8 +32,8 @@ spec:
         livenessProbe: #tells Kubernetes “restart me if I’m unhealthy”
           tcpSocket:
             port: 27017
-          initialDelaySeconds: 8
-          periodSeconds: 8
+          initialDelaySeconds: 5
+          periodSeconds: 5
 
 # ---
 # apiVersion: v1
