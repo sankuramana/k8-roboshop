@@ -25,6 +25,8 @@ spec:
       - name: catalogue
         image: ramanadockerhub/catalogue:v1
         ports: #just for information
+        - name: liveness-port
+          containerPort: 8080
         readinessProbe: #tells Kubernetes “I’m ready to accept connections”
           httpGet:
             path: /health
@@ -48,7 +50,7 @@ spec:
   selector:
     project: roboshop
     component: catalogue
-    tier: backendb
+    tier: backend
   ports:
   - protocol: TCP
     port: 8080
