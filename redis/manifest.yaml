@@ -27,7 +27,7 @@ spec:
         imagePullPolicy: Always
         readinessProbe: #tells Kubernetes “I’m ready to accept connections”
           tcpSocket:
-            port: 270637917        # redis port
+            port: 6379       # redis port
           initialDelaySeconds: 10
           periodSeconds: 10
         livenessProbe: #tells Kubernetes “restart me if I’m unhealthy”
