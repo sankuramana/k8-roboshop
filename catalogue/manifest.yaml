@@ -35,7 +35,7 @@ spec:
         image: ramanadockerhub/catalogue:v1
         imagePullPolicy: Always
         envFrom:
-        - ConfigMapRef:
+        - configMapRef:
           name: catalogue
         ports: #just for information
         - name: liveness-port
