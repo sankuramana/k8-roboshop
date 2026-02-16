@@ -24,6 +24,7 @@ spec:
       containers:
       - name: mongodb
         image: ramanadockerhub/mongodb:v1
+        imagePullPolicy: Always
         readinessProbe: #tells Kubernetes “I’m ready to accept connections”
           tcpSocket:
             port: 27017        # MongoDB port
