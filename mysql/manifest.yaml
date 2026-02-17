@@ -28,12 +28,12 @@ spec:
         readinessProbe: #tells Kubernetes “I’m ready to accept connections”
           tcpSocket:
             port: 3306        # mysql port
-          initialDelaySeconds: 10
+          initialDelaySeconds: 90
           periodSeconds: 10
         livenessProbe: #tells Kubernetes “restart me if I’m unhealthy”
           tcpSocket:
             port: 3306
-          initialDelaySeconds: 5
+          initialDelaySeconds: 90
           periodSeconds: 5
 
 ---
