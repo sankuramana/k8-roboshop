@@ -50,5 +50,5 @@ spec:
   ports:
   - protocol: TCP
     port: 5672
-    targetPort: 65672
+    targetPort: 5672
 
