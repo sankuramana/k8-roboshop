@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shipping
+  namespace: roboshop
+data:
+  CART_ENDPOINT: "cart:8080"
+  DB_HOST: "mysql"
+ 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+  namespace: roboshop 
+  labels:
+    project: roboshop
+    component: shipping
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      component: shipping
+      tier: backend
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: shipping
+        tier: backend
+    spec:
+      containers:
+      - name: shipping
+        image: ramanadockerhub/shipping:v1
+        imagePullPolicy: Always
+        envFrom:
+          - configMapRef:
+              name: shipping
+        ports: #just for information
+        - name: liveness-port
+          containerPort: 8080
+        readinessProbe: #tells Kubernetes “I’m ready to accept connections”
+          httpGet:
+            path: /health
+            port: liveness-port
+          failureThreshold: 1
+          periodSeconds: 15  
+        livenessProbe: #tells Kubernetes “restart me if I’m unhealthy”
+          httpGet:
+            path: /health
+            port: liveness-port
+          failureThreshold: 1
+          periodSeconds: 15
+
+---
+apiVersion: v1 #service api vesion is "v1"while "deployments is apps/v1"
+kind: Service
+metadata:
+  name: shipping #servicename = DNS name for the mongodb deployement
+  namespace: roboshop #Selector + namespace must match
+spec:
+  selector:
+    project: roboshop
+    component: shipping
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+
